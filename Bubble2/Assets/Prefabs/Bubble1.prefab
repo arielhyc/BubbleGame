@@ -185,7 +185,9 @@ MonoBehaviour:
   dataCollection: {fileID: 11400000, guid: 0256d3689da555548bd5c46fe1ae73a6, type: 2}
   selectedDataType: 0
   selectedIndex: 0
-  selectedContentText: Content Bubble 1
+  contentBubbleData: {fileID: 0}
+  numericBubbleData: {fileID: 0}
+  selectedContentText: Pizza
   selectedNumericValue: 0
 --- !u!1 &8226864325057790274
 GameObject:

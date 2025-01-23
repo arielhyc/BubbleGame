@@ -6040,6 +6040,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3067389619040711038, guid: f9b66b46a19602b4d80ea9cab0ea0eef, type: 3}
+      propertyPath: selectedContentText
+      value: Pizza
+      objectReference: {fileID: 0}
     - target: {fileID: 8226864324923649507, guid: f9b66b46a19602b4d80ea9cab0ea0eef, type: 3}
       propertyPath: m_RootOrder
       value: 1

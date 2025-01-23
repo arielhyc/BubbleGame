@@ -8,16 +8,16 @@ public class BubbleMerge : MonoBehaviour
     public float radius = 0.5f;                  // 泡泡的半径
     public float mergeCooldown = 0.5f; // 冷却时间，单位为秒
     public float mergeAnimationDuration = 2f; // 融合动画持续时间
-
     public float initialSize = 0.01f; // 初始尺寸
-
-    private BubbleDataCollection.BubbleDataType _bubbleDataType;
     private bool isCoolingDown = false; // 用于标记是否在冷却中
+    
+    private BubbleDataCollection.BubbleDataType _bubbleDataType;
     
     private Collider2D[] newBubbleChildColliders; // 新泡泡所有子物体的碰撞器
     private Rigidbody2D[] newBubbleChildRigidbodies; //  新泡泡所有子物体的刚体
     
     public LayerMask collisionMask; // 检测重叠的层
+    
     void Start()
     {
         _bubbleDataType = GetComponent<BubbleStatistic>().selectedDataType;
@@ -79,7 +79,7 @@ public class BubbleMerge : MonoBehaviour
             NumericBubbleData data2;
             data1 = this.gameObject.GetComponent<BubbleStatistic>().contentBubbleData;
             data2 = otherBubble.gameObject.GetComponent<BubbleStatistic>().numericBubbleData;
-            // 根据 NumericData 的操作类型修改 ContentData
+            // 根据 NumericData 的操作类型暂时修改 ContentData
             ApplyNumericEffect(data1, data2);
         }
         else if (this.gameObject.GetComponent<BubbleStatistic>().selectedDataType ==
@@ -89,10 +89,11 @@ public class BubbleMerge : MonoBehaviour
             ContentBubbleData data2;
             data1 = this.gameObject.GetComponent<BubbleStatistic>().numericBubbleData;
             data2 = otherBubble.gameObject.GetComponent<BubbleStatistic>().contentBubbleData;
-            // 根据 NumericData 的操作类型修改 ContentData
+            // 根据 NumericData 的操作类型暂时修改 ContentData
             ApplyNumericEffect(data2, data1);
         }
     }
+
     private void ApplyNumericEffect(ContentBubbleData contentData, NumericBubbleData numericData)
     {
         switch (numericData.operationType)
