@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b045f0a19bd7cb42b509d956bc641bd, type: 3}
-  m_Name: NumericBubbleData3
+  m_Name: ChangeValue3
   m_EditorClassIdentifier: 
-  bubbleText: Numeric Bubble 3
+  bubbleText: Change Value 3
   value1: 0
   value2: 0
   value3: 5
-  operation: 0
+  operationType: 0

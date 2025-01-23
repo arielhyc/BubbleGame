@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6d2b4f4cd0ea0489a5cc553ae1b814, type: 3}
   m_Name: BubbleDataCollection
   m_EditorClassIdentifier: 
+  selectedDataType: 0
   contentBubbleList:
   - {fileID: 11400000, guid: b1934bd8be8a46442ac523449109b8e7, type: 2}
   - {fileID: 11400000, guid: 9a3eccc2d2e72164b95b1d76d37e604f, type: 2}
@@ -20,3 +21,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 70f27e0a3be96d34396bca3c881eec4e, type: 2}
   - {fileID: 11400000, guid: db1051b23fa2eb348ba37cbea9e34590, type: 2}
   - {fileID: 11400000, guid: 33af6b8499ad94443a455612bd0d0a40, type: 2}
+  - {fileID: 11400000, guid: 29ebc3de792cee34eb78bfd29b7542d6, type: 2}

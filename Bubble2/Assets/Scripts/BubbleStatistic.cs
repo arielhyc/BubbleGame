@@ -58,7 +58,7 @@ public class BubbleStatistic : MonoBehaviour
         }
         else if (selectedDataType == BubbleDataCollection.BubbleDataType.Numeric)
         {
-            return $"{dataCollection.numericBubbleList[selectedIndex].value1:F1}\n{dataCollection.numericBubbleList[selectedIndex].value2:F1}\n{dataCollection.numericBubbleList[selectedIndex].value3:F1}";
+            return $"{dataCollection.numericBubbleList[selectedIndex].bubbleText:F1}\n{dataCollection.numericBubbleList[selectedIndex].value1:F1}\n{dataCollection.numericBubbleList[selectedIndex].value2:F1}\n{dataCollection.numericBubbleList[selectedIndex].value3:F1}";
         }
         return "Unknown";
     }

@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class BubbleMerge : MonoBehaviour
 {
@@ -17,10 +20,13 @@ public class BubbleMerge : MonoBehaviour
     private Rigidbody2D[] newBubbleChildRigidbodies; //  新泡泡所有子物体的刚体
     
     public LayerMask collisionMask; // 检测重叠的层
-    
+    public ContentBubbleData tempContentBubbleData;
+    public NumericBubbleData tempNumericBubbleData;
+    [FormerlySerializedAs("otherBubbleMerge")] public BubbleMerge numericBubbleMerge;
     void Start()
     {
         _bubbleDataType = GetComponent<BubbleStatistic>().selectedDataType;
+        tempContentBubbleData = null;
         // 获取新泡泡的所有刚体和碰撞体
         GetNewBubbleCollidersAndRigidbodies(this.gameObject);
         // 暂时禁用新泡泡物理
@@ -69,58 +75,40 @@ public class BubbleMerge : MonoBehaviour
         }
     }
 
+    // 定义一个事件，通知其他脚本进行效果触发
+    public static event Action<BubbleMerge> OnBubbleCollision;
+
     private void TriggerBubbleEffect(BubbleMerge otherBubble)
     {
-        // 获取泡泡数据
+        // 获取泡泡数据和类型
         if( this.gameObject.GetComponent<BubbleStatistic>().selectedDataType == 
             BubbleDataCollection.BubbleDataType.Content)
         {
-            ContentBubbleData data1;
-            NumericBubbleData data2;
-            data1 = this.gameObject.GetComponent<BubbleStatistic>().contentBubbleData;
-            data2 = otherBubble.gameObject.GetComponent<BubbleStatistic>().numericBubbleData;
-            // 根据 NumericData 的操作类型暂时修改 ContentData
-            ApplyNumericEffect(data1, data2);
+            tempContentBubbleData = this.gameObject.GetComponent<BubbleStatistic>().contentBubbleData;
+            tempNumericBubbleData = otherBubble.gameObject.GetComponent<BubbleStatistic>().numericBubbleData;
+            numericBubbleMerge = otherBubble;
+            if (tempContentBubbleData == null)
+            {
+                Debug.LogError("tempContentBubbleData is null in "+ gameObject.name);
+                return;
+            }
+            if (tempNumericBubbleData == null)
+            {
+                Debug.LogError("tempNumericBubbleData is null in "+otherBubble.numericBubbleMerge.gameObject.name);
+                return;
+            }
+            // 触发事件，通知其他脚本
+            OnBubbleCollision?.Invoke(this);
         }
         else if (this.gameObject.GetComponent<BubbleStatistic>().selectedDataType ==
                  BubbleDataCollection.BubbleDataType.Numeric)
         {
-            NumericBubbleData data1;
-            ContentBubbleData data2;
-            data1 = this.gameObject.GetComponent<BubbleStatistic>().numericBubbleData;
-            data2 = otherBubble.gameObject.GetComponent<BubbleStatistic>().contentBubbleData;
-            // 根据 NumericData 的操作类型暂时修改 ContentData
-            ApplyNumericEffect(data2, data1);
+            //总是由ContentBubble触发效果脚本
+            otherBubble.TriggerBubbleEffect(this);
         }
     }
 
-    private void ApplyNumericEffect(ContentBubbleData contentData, NumericBubbleData numericData)
-    {
-        switch (numericData.operationType)
-        {
-            case OperationType.Add:
-                contentData.value1 += numericData.value1;
-                contentData.value2 += numericData.value2;
-                contentData.value3 += numericData.value3;
-                break;
-            case OperationType.Subtract:
-                contentData.value1 -= numericData.value1;
-                contentData.value2 -= numericData.value2;
-                contentData.value3 -= numericData.value3;
-                break;
-            case OperationType.Multiply:
-                contentData.value1 *= numericData.value1;
-                contentData.value2 *= numericData.value2;
-                contentData.value3 *= numericData.value3;
-                break;
-            case OperationType.Divide:
-                contentData.value1 = numericData.value1 != 0 ? contentData.value1 / numericData.value1 : contentData.value1;
-                contentData.value2 = numericData.value2 != 0 ? contentData.value2 / numericData.value2 : contentData.value2;
-                contentData.value3 = numericData.value3 != 0 ? contentData.value3 / numericData.value3 : contentData.value3;
-                break;
-        }
-    }
-    void MergeBubbles(BubbleMerge otherBubble)
+    private void MergeBubbles(BubbleMerge otherBubble)
     {
         print("Merge Triggered");
         // 设置冷却状态，避免短时间内重复融合

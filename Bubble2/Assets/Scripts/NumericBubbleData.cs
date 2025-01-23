@@ -7,7 +7,8 @@ public enum OperationType
     Add,    // 加法
     Subtract, // 减法
     Multiply, // 乘法
-    Divide   // 除法
+    Divide,  // 除法
+    Other // 其他（效果并非数值运算相关）
 }
 
 [CreateAssetMenu(fileName = "NewBubbleData", menuName = "Bubble/NumericBubbleData" , order = 3)]
