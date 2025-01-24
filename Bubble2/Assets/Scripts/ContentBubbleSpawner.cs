@@ -10,6 +10,8 @@ public class ContentBubbleSpawner : MonoBehaviour
 
     private bool contentBubbleSpawned = false; // 标记 Content 泡泡是否已经生成
 
+    public delegate void BubbleGeneratedHandler(GameObject bubble);
+    public static event BubbleGeneratedHandler OnBubbleGenerated;
     void Start()
     {
         // 在游戏开始后 5 秒钟生成 Content 泡泡
@@ -22,8 +24,13 @@ public class ContentBubbleSpawner : MonoBehaviour
         if (!contentBubbleSpawned)
         {
             // 在指定位置生成 Content 泡泡
-            Instantiate(contentBubblePrefab, spawnPosition.transform.position, Quaternion.identity);
+            GameObject contentBubble = Instantiate(contentBubblePrefab, spawnPosition.transform.position, Quaternion.identity);
             contentBubbleSpawned = true; // 确保 Content 泡泡只生成一次
+            // 触发事件，通知 GameManager
+            if (OnBubbleGenerated != null)
+            {
+                OnBubbleGenerated(contentBubble);
+            }
         }
     }
 }
