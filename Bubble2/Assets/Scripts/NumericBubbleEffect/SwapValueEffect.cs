@@ -21,6 +21,7 @@ public class SwapValueEffect : MonoBehaviour
     // 事件触发时执行属性互换
     private void SwapTwoRandomAttributes(BubbleMerge bubbleMerge)
     {
+        if (!gameObject.GetComponent<BubbleMerge>().isTargetBubble) return;
         ContentBubbleData contentBubbleData = bubbleMerge.tempContentBubbleData;
         if (contentBubbleData == null)
         {
@@ -54,5 +55,9 @@ public class SwapValueEffect : MonoBehaviour
             
         Debug.Log($"Attributes swapped: {index1} and {index2}");
         Debug.Log($"New values: attribute1 = {contentBubbleData.value1}, attribute2 = {contentBubbleData.value2}, attribute3 = {contentBubbleData.value3}");
+        
+        // 取消订阅事件
+        gameObject.GetComponent<BubbleMerge>().isTargetBubble = false;
+        BubbleMerge.OnBubbleCollision -= SwapTwoRandomAttributes;
     }
 }

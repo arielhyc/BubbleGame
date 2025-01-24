@@ -1919,11 +1919,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3cd226198e790499ed096ab63e374b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceStrength: 0.02
+  forceStrength: 0.01
   changeForceInterval: 2
   boundsMin: {x: -20, y: -20}
   boundsMax: {x: 20, y: 20}
-  maxSpeed: 2
+  maxSpeed: 1
 --- !u!114 &633131201183081757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1971,8 +1971,10 @@ MonoBehaviour:
   contentBubblePrefab: {fileID: 8226864324923649511, guid: f9b66b46a19602b4d80ea9cab0ea0eef, type: 3}
   radius: 0.5
   mergeCooldown: 0.5
+  cooldownTime: 0.5
   mergeAnimationDuration: 0.5
   initialSize: 0.01
+  isTargetBubble: 0
   collisionMask:
     serializedVersion: 2
     m_Bits: 1
@@ -1996,8 +1998,10 @@ MonoBehaviour:
   selectedIndex: 3
   contentBubbleData: {fileID: 0}
   numericBubbleData: {fileID: 0}
-  selectedContentText: Pizza
-  selectedNumericValue: 0
+  tastyValue: 0
+  healthValue: 0
+  satietyValue: 0
+  bubbleTextData: {fileID: 0}
 --- !u!114 &-1924372701940704367
 MonoBehaviour:
   m_ObjectHideFlags: 0

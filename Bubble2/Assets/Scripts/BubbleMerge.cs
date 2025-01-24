@@ -10,9 +10,12 @@ public class BubbleMerge : MonoBehaviour
     public GameObject contentBubblePrefab; // 用于生成新的Content类型泡泡的Prefab
     public float radius = 0.5f;                  // 泡泡的半径
     public float mergeCooldown = 0.5f; // 冷却时间，单位为秒
+    public float cooldownTime = 0.5f; // 冷却时间，单位为秒
     public float mergeAnimationDuration = 2f; // 融合动画持续时间
     public float initialSize = 0.01f; // 初始尺寸
     private bool isCoolingDown = false; // 用于标记是否在冷却中
+    public bool isTargetBubble = false; // 用于标记是否是要处理的泡泡
+    private HashSet<GameObject> processedBubbles = new HashSet<GameObject>(); // 已处理的泡泡
     
     private BubbleDataCollection.BubbleDataType _bubbleDataType;
     
@@ -47,6 +50,9 @@ public class BubbleMerge : MonoBehaviour
 
     public void OnChildCollision(BubbleMerge otherBubble)
     {
+        // 如果这个泡泡已经处理过，直接返回
+        if (processedBubbles.Contains(otherBubble.gameObject))
+            return;
         if (otherBubble != null && !isCoolingDown && !otherBubble.isCoolingDown)
         {
             Debug.Log("OnChildCollision1" + this.GetInstanceID() + "," + otherBubble.GetInstanceID());
@@ -57,6 +63,9 @@ public class BubbleMerge : MonoBehaviour
                 HandleCollision(otherBubble);
             }
         }
+        // 将泡泡加入已处理列表，并启动冷却时间
+        processedBubbles.Add(otherBubble.gameObject);
+        StartCoroutine(RemoveFromProcessedAfterCooldown(otherBubble.gameObject));
 
     }
     
@@ -75,6 +84,12 @@ public class BubbleMerge : MonoBehaviour
             MergeBubbles(otherBubble);
             Debug.Log("Bubbles of different types collided!");
         }
+    }
+    
+    private System.Collections.IEnumerator RemoveFromProcessedAfterCooldown(GameObject bubble)
+    {
+        yield return new WaitForSeconds(cooldownTime);
+        processedBubbles.Remove(bubble);
     }
 
     // 定义一个事件，通知其他脚本进行效果触发
@@ -99,6 +114,7 @@ public class BubbleMerge : MonoBehaviour
                 Debug.LogError("tempNumericBubbleData is null in "+otherBubble.numericBubbleMerge.gameObject.name);
                 return;
             }
+            otherBubble.isTargetBubble = true;
             // 触发事件，通知其他脚本
             OnBubbleCollision?.Invoke(this);
         }
@@ -150,7 +166,7 @@ public class BubbleMerge : MonoBehaviour
     Vector3 GetSafeSpawnPosition(Vector3 initialPosition, float radius)
     {
         int maxAttempts = 10; // 最大尝试次数
-        float offsetStep = 0.1f; // 每次偏移的距离
+        float offsetStep = 0.02f; // 每次偏移的距离
         int attempt = 0;
 
         Vector3 safePosition = initialPosition;

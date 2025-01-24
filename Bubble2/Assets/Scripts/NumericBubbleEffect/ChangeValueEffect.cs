@@ -18,6 +18,7 @@ public class ChangeValueEffect : MonoBehaviour
     
     private void ApplyChangeValueEffect(BubbleMerge bubbleMerge)
     {
+        if (!gameObject.GetComponent<BubbleMerge>().isTargetBubble) return;
         ContentBubbleData contentData = bubbleMerge.tempContentBubbleData;
         NumericBubbleData numericData = bubbleMerge.tempNumericBubbleData;
         if (contentData == null)
@@ -67,5 +68,8 @@ public class ChangeValueEffect : MonoBehaviour
             case OperationType.Other:
                 break;
         }
+        // 取消订阅事件,重置isTargetBubble标记
+        gameObject.GetComponent<BubbleMerge>().isTargetBubble = false;
+        BubbleMerge.OnBubbleCollision -= ApplyChangeValueEffect;
     }
 }

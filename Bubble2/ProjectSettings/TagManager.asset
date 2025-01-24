@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - BubbleChild
+  - Wall
   layers:
   - Default
   - TransparentFX
