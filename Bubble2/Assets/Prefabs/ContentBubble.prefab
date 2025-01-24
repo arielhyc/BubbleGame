@@ -172,6 +172,7 @@ MonoBehaviour:
     m_Bits: 1
   tempContentBubbleData: {fileID: 0}
   tempNumericBubbleData: {fileID: 0}
+  numericBubbleMerge: {fileID: 0}
 --- !u!114 &3067389619040711038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,8 +190,10 @@ MonoBehaviour:
   selectedIndex: 0
   contentBubbleData: {fileID: 0}
   numericBubbleData: {fileID: 0}
-  selectedContentText: Pizza
-  selectedNumericValue: 0
+  tastyValue: 0
+  healthValue: 0
+  satietyValue: 0
+  bubbleTextData: {fileID: 11400000, guid: f7e7dd4e8517e584e82dfba6f43d9b0a, type: 2}
 --- !u!1 &8226864325057790274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,8 +2075,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5
-  m_fontSizeBase: 5
+  m_fontSize: 4
+  m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2108,7 +2111,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 8.534664, y: 1.6653, z: 8.4999695, w: 2.4632545}
+  m_margin: {x: 7.853964, y: 0.77743006, z: 7.8340664, w: 1.7233627}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0

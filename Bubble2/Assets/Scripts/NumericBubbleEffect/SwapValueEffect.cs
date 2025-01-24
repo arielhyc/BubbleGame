@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwapValueEffect : MonoBehaviour
@@ -27,7 +28,7 @@ public class SwapValueEffect : MonoBehaviour
             return;
         }
         // 创建一个数组来存储三个属性值
-        float[] attributes = new float[] { contentBubbleData.value1, contentBubbleData.value2, contentBubbleData.value3 };
+        int[] attributes = new int[] { contentBubbleData.value1, contentBubbleData.value2, contentBubbleData.value3 };
 
         // 随机选择两个不同的索引
         int index1 = Random.Range(0, 3);
@@ -38,7 +39,7 @@ public class SwapValueEffect : MonoBehaviour
         } while (index2 == index1);
 
         // 交换这两个索引对应的属性值
-        float temp = attributes[index1];
+        int temp = attributes[index1];
         attributes[index1] = attributes[index2];
         attributes[index2] = temp;
 
@@ -47,6 +48,10 @@ public class SwapValueEffect : MonoBehaviour
         contentBubbleData.value2 = attributes[1];
         contentBubbleData.value3 = attributes[2];
 
+        bubbleMerge.gameObject.GetComponent<BubbleStatistic>().
+        UpdateValues(contentBubbleData.value1, contentBubbleData.value2,
+            contentBubbleData.value3);
+            
         Debug.Log($"Attributes swapped: {index1} and {index2}");
         Debug.Log($"New values: attribute1 = {contentBubbleData.value1}, attribute2 = {contentBubbleData.value2}, attribute3 = {contentBubbleData.value3}");
     }

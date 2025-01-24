@@ -11,6 +11,16 @@ public class BubbleStatisticEditor : Editor
         // 获取目标对象
         BubbleStatistic bubbleStatistic = (BubbleStatistic)target;
 
+        // 显示默认字段，包括 public 字段
+        DrawDefaultInspector();
+
+        // 如果 contentTextData 没有显示，可以手动绘制它
+        if (bubbleStatistic.bubbleTextData != null)
+        {
+            // 绘制 ContentTextData
+            EditorGUILayout.ObjectField("Content Text Data", bubbleStatistic.bubbleTextData, typeof(ContentTextData), false);
+        }
+        
         // 绘制 BubbleDataCollection 选择框
         bubbleStatistic.dataCollection = (BubbleDataCollection)EditorGUILayout.ObjectField(
             "Bubble Data Collection",
@@ -66,7 +76,6 @@ public class BubbleStatisticEditor : Editor
             }
 
             bubbleStatistic.selectedIndex = EditorGUILayout.Popup("Select Content Data", bubbleStatistic.selectedIndex, contentBubbleNames);
-            bubbleStatistic.selectedContentText = contentBubbleList[bubbleStatistic.selectedIndex].bubbleText; // 更新选中的内容
         }
         else
         {
@@ -88,7 +97,6 @@ public class BubbleStatisticEditor : Editor
             }
 
             bubbleStatistic.selectedIndex = EditorGUILayout.Popup("Select Numeric Data", bubbleStatistic.selectedIndex, numericBubbleNames);
-            bubbleStatistic.selectedNumericValue = numericBubbleList[bubbleStatistic.selectedIndex].value1; // 更新选中的数值
         }
         else
         {

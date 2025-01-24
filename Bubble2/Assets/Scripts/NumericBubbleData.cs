@@ -18,9 +18,9 @@ public class NumericBubbleData : ScriptableObject
     public string bubbleText; // 泡泡的文字内容
 
     [Header("Values")]
-    public float value1;        // 第一个数值
-    public float value2;        // 第二个数值
-    public float value3;        // 第三个数值
+    public int value1;        // 第一个数值
+    public int value2;        // 第二个数值
+    public int value3;        // 第三个数值
     
     [Header("ValueOperation")]
     public OperationType operationType;  // 操作类型（加、减、乘、除）

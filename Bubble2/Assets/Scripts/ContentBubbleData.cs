@@ -10,9 +10,9 @@ public class ContentBubbleData : ScriptableObject
     public string bubbleText; // 泡泡的文字内容
 
     [Header("Values")]
-    public float value1; // 数值 1
-    public float value2; // 数值 2
-    public float value3; // 数值 3
+    public int value1; // 数值 1
+    public int value2; // 数值 2
+    public int value3; // 数值 3
     
     //生成Json文件储存初始data，在退出playmode时将该SO的data revert到初始data
 #if UNITY_EDITOR

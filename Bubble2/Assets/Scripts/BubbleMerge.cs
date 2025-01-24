@@ -49,9 +49,11 @@ public class BubbleMerge : MonoBehaviour
     {
         if (otherBubble != null && !isCoolingDown && !otherBubble.isCoolingDown)
         {
+            Debug.Log("OnChildCollision1" + this.GetInstanceID() + "," + otherBubble.GetInstanceID());
             // 通过 ID 比较，确保只执行一次融合
             if (this.GetInstanceID() < otherBubble.GetInstanceID())
             {
+                Debug.Log("OnChildCollision2");
                 HandleCollision(otherBubble);
             }
         }
@@ -132,8 +134,8 @@ public class BubbleMerge : MonoBehaviour
         }
 
         // 销毁原有泡泡
-        Destroy(this.gameObject);
-        Destroy(otherBubble.gameObject);
+        Destroy(this.gameObject,0.1f);
+        Destroy(otherBubble.gameObject,0.1f);
         // 恢复冷却状态
         Invoke(nameof(ResetCooldown), mergeCooldown);
     }

@@ -15,8 +15,7 @@ MonoBehaviour:
   selectedDataType: 0
   contentBubbleList:
   - {fileID: 11400000, guid: b1934bd8be8a46442ac523449109b8e7, type: 2}
-  - {fileID: 11400000, guid: 9a3eccc2d2e72164b95b1d76d37e604f, type: 2}
-  - {fileID: 11400000, guid: b0ca21716bcaf5849852ae9a404818d9, type: 2}
+  - {fileID: 11400000, guid: 579af9b77e080eb4cb3ade7e81dbe9ed, type: 2}
   numericBubbleList:
   - {fileID: 11400000, guid: 70f27e0a3be96d34396bca3c881eec4e, type: 2}
   - {fileID: 11400000, guid: db1051b23fa2eb348ba37cbea9e34590, type: 2}
