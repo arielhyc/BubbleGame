@@ -18,7 +18,7 @@ public class EndTrigger : MonoBehaviour
                                   $"Wellness: {collision.GetComponentInParent<BubbleStatistic>().healthValue}\n" +
                                   $"Fullness: {collision.GetComponentInParent<BubbleStatistic>().satietyValue}";
 
-            FindObjectOfType<GameManager>().TriggerEndGame(bubbleInfoText.text);
+            FindObjectOfType<BubbleGameManager>().TriggerEndGame(bubbleInfoText.text);
         }
     }
 }

@@ -208,7 +208,7 @@ public class BubbleMerge : MonoBehaviour
             float t = elapsedTime / mergeAnimationDuration;
             newBubble.transform.localScale = Vector3.Lerp(startScale, targetScale, t); // 平滑缩放
             // 检测并调整位置
-            AvoidOverlap();
+            // AvoidOverlap();
             //print("newBubble localScale: "+newBubble.transform.localScale);
             elapsedTime += Time.deltaTime;
             yield return null;

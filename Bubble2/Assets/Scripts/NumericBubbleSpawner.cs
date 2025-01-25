@@ -19,7 +19,7 @@ public class NumericBubbleSpawner : MonoBehaviour
 
     private void Start()
     {
-        SpawnNumericBubbles(initBubbleCount);
+        
     }
     
     void Update()
@@ -42,19 +42,19 @@ public class NumericBubbleSpawner : MonoBehaviour
             if (numericBubbles.Length < minBubbleCount)
             {
                 // 生成新的泡泡
-                SpawnNumericBubbles(newBubbleCount);
+                SpawnNumericBubbles(newBubbleCount, numericBubbles);
             }
         }
     }
 
-    private void SpawnNumericBubbles(int bubbleCount)
+    private void SpawnNumericBubbles(int bubbleCount, BubbleStatistic[] numericBubbles)
     {
         int spawned = 0;
 
         while (spawned < bubbleCount)
         {
             Vector2 randomPosition = GetRandomPositionInTrigger();
-            if (!IsOverlapping(randomPosition))
+            if (!IsOverlapping(randomPosition, numericBubbles))
             {
                 // 随机选择一个泡泡预制件
                 GameObject bubblePrefab = numericBubblePrefabs[Random.Range(0, numericBubblePrefabs.Count)];
@@ -75,11 +75,21 @@ public class NumericBubbleSpawner : MonoBehaviour
         return new Vector2(randomX, randomY);
     }
 
-    private bool IsOverlapping(Vector2 position)
+    private bool IsOverlapping(Vector2 position, BubbleStatistic[] numericBubbles)
     {
         // 检测随机生成点附近是否有其他物体
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, bubbleRadius, collisionMask);
-        return colliders.Length > 0;
+        bool overlapped = false;
+        
+        foreach (BubbleStatistic numericBubble in numericBubbles)
+        {
+            if (Vector2.Distance(position, numericBubble.transform.position) < bubbleRadius)
+            {
+                overlapped = true;
+                break;
+            }
+        }
+        
+        return overlapped;
     }
 
 }

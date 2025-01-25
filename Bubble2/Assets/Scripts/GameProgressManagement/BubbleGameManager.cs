@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI; // 用于更新UI元素
 
-public class GameManager : MonoBehaviour
+public class BubbleGameManager : MonoBehaviour
 {
     public float gameTimeLimit = 60f; // 游戏时间限制，单位：秒
     public TextMeshProUGUI timerText; // 用于显示倒计时的UI文本
@@ -33,6 +34,12 @@ public class GameManager : MonoBehaviour
         // 获取生成的 Content 泡泡
         contentBubble = bubble;
     }
+
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
+
     void Start()
     {
         Debug.Log("[GameManager] Start Triggered");
@@ -81,11 +88,9 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Debug.Log("[GameManager] RestartGame Triggered");
-        // 恢复游戏时间
-        Time.timeScale = 1;
 
         // 重载场景
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Scenes/Scene1");
     }
 
     public void QuitGame()
