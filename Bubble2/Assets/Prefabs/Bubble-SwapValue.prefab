@@ -1999,10 +1999,11 @@ MonoBehaviour:
   selectedIndex: 3
   contentBubbleData: {fileID: 0}
   numericBubbleData: {fileID: 0}
-  tastyValue: 0
-  healthValue: 0
-  satietyValue: 0
+  courageValue: 0
+  curiosityValue: 0
+  whimsyValue: 0
   bubbleTextData: {fileID: 0}
+  textDisplay: {fileID: 0}
 --- !u!114 &-1924372701940704367
 MonoBehaviour:
   m_ObjectHideFlags: 0

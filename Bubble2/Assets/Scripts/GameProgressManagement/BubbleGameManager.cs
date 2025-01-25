@@ -16,8 +16,8 @@ public class BubbleGameManager : MonoBehaviour
     public TextMeshProUGUI endGameText; // 游戏结束时显示的文本
     private GameObject contentBubble; // Content 泡泡
     private float remainingTime; // 剩余时间
-    
 
+    private bool isPlaying = false;
     void OnEnable()
     {
         // 订阅事件
@@ -39,18 +39,21 @@ public class BubbleGameManager : MonoBehaviour
 
     private void Awake()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 0;
     }
 
-    void Start()
+    public void StartGame()
     {
+        Time.timeScale = 1;
         Debug.Log("[GameManager] Start Triggered");
         remainingTime = gameTimeLimit; // 初始化剩余时间
         endGameUI.SetActive(false); // 游戏结束UI一开始不可见
+        isPlaying = true;
     }
 
     void Update()
     {
+        if (!isPlaying) return;
         Debug.Log("[GameManager] Update Triggered" + remainingTime);
         // 游戏倒计时
         remainingTime -= Time.deltaTime;
