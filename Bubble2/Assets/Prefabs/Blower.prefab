@@ -160,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c835a0106df4fd04d9f2d3a005d90cfd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 628f2c5185e6e304382e54fcc6325a27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -220,14 +220,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8623800807728630876}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.37, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8623800807073154229}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &8623800807728630865
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -931,7 +931,7 @@ ParticleSystem:
     m_SpriteRenderer: {fileID: 0}
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
-    alignToDirection: 0
+    alignToDirection: 1
     m_Texture: {fileID: 0}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
