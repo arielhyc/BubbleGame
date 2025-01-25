@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b045f0a19bd7cb42b509d956bc641bd, type: 3}
-  m_Name: ChangeValue2
+  m_Name: ChangeValue5
   m_EditorClassIdentifier: 
-  bubbleText: More Curiosity
+  bubbleText: Less Curiosity
   value1: 0
   value2: 5
   value3: 0
-  operationType: 0
+  operationType: 1

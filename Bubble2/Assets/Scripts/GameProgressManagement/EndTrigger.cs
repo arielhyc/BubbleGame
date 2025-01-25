@@ -13,11 +13,10 @@ public class EndTrigger : MonoBehaviour
         if (bubbleDataType == BubbleDataCollection.BubbleDataType.Content)
         {
             // 更新UI信息
-            bubbleInfoText.text = $"Final Decision: {collision.GetComponentInParent<BubbleStatistic>().bubbleTextData.objectNameText}\n" +
-                                  $"Flavor: {collision.GetComponentInParent<BubbleStatistic>().tastyValue}\n" +
-                                  $"Wellness: {collision.GetComponentInParent<BubbleStatistic>().healthValue}\n" +
-                                  $"Fullness: {collision.GetComponentInParent<BubbleStatistic>().satietyValue}";
-
+            bubbleInfoText.text = "Nice Dream: \n"+$"{collision.GetComponentInParent<BubbleStatistic>().textDisplay.text}\n" +
+                                  $"Courage: {collision.GetComponentInParent<BubbleStatistic>().courageValue}\n" +
+                                  $"Curiosity: {collision.GetComponentInParent<BubbleStatistic>().curiosityValue}\n" +
+                                  $"Whimsy: {collision.GetComponentInParent<BubbleStatistic>().whimsyValue}";
             FindObjectOfType<BubbleGameManager>().TriggerEndGame(bubbleInfoText.text);
         }
     }

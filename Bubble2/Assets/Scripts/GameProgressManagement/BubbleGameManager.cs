@@ -10,7 +10,9 @@ public class BubbleGameManager : MonoBehaviour
 {
     public float gameTimeLimit = 60f; // 游戏时间限制，单位：秒
     public TextMeshProUGUI timerText; // 用于显示倒计时的UI文本
+    public TextMeshPro contentBubbleDisplayText;
     public GameObject endGameUI; // 游戏结束时显示的UI
+    public Image endGameBackground;
     public TextMeshProUGUI endGameText; // 游戏结束时显示的文本
     private GameObject contentBubble; // Content 泡泡
     private float remainingTime; // 剩余时间
@@ -77,12 +79,23 @@ public class BubbleGameManager : MonoBehaviour
 
     public void TriggerEndGame(string resultText)
     {
+        StartCoroutine(TriggerSequence(resultText));
+    }
+
+    private void PauseGame(string resultText)
+    {
         // 暂停游戏时间
         Time.timeScale = 0;
+    }
+
+    IEnumerator TriggerSequence(string resultText)
+    {
+        
+        yield return StartCoroutine(endGameBackground.GetComponent<EndGameBackground>().FadeInBackground()); // 等待 FunctionA 完成
         // 显示游戏结束UI并显示相应文本
         endGameUI.SetActive(true);
         endGameText.text = resultText;
-        // 在此可以进行更多的结算逻辑（比如保存分数、显示排行榜等）
+        PauseGame(resultText);
     }
     
     public void RestartGame()

@@ -12,13 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21aaea92fa74fc545b92e4435e3bc329, type: 3}
   m_Name: ContentTextData1
   m_EditorClassIdentifier: 
-  tastyTextLow: Low Tasty
-  tastyTextMedium: Mediium Tasty
-  tastyTextHigh: High Tasty
-  healthTextLow: Low Healthy
-  healthTextMedium: Medium Healthy
-  healthTextHigh: High Healthy
-  satietyTextLow: Low Satiety
-  satietyTextMedium: Medium Satiety
-  satietyTextHigh: High Satiety
+  courageTextLow:
+  - Nervously standing still
+  - Hesitantly
+  - Heart racing
+  - Afraid to take a step
+  courageTextMedium:
+  - Cautiously approaching
+  - Gathering a bit of courage
+  - Testing the waters
+  - Summoning the courage to move forward
+  courageTextHigh:
+  - Fearlessly
+  - Pressing forward
+  - Unfazed
+  - Confidently marching forward
+  curiosityTextLow:
+  - the dark forest ahead seems unremarkable
+  - the giant stone statues seem nothing more than decorative
+  - ' I walk past the floating colorful bubbles without even a glance'
+  curiosityTextMedium:
+  - the feathers floating in the air catch my eye
+  - a glowing night bird flies by
+  - I spot a transparent ice mountain in the distance
+  curiosityTextHigh:
+  - the giant glowing ring shinning in the sky
+  - the shimmering waterfall standing in the distance
+  - I spot a glowing giant red moon
+  whimsyTextLow:
+  - feeling no odd thoughts crossing my mind
+  - I just lowered my head and looked at the occasional green light shining under
+    my feet
+  whimsyTextMedium:
+  - I'm starting to wonder if I can touch it
+  - The music story it brought suddenly popped into my mind
+  whimsyTextHigh:
+  - a little boat carried me slowly through the silver river flows in the sky
+  - I suddenly realized that this was not just a dream, but also an entrance to another
+    time and space
   objectNameText: Hamburger

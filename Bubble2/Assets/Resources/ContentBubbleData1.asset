@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1ecad889119f643b00ed294e362ae8, type: 3}
   m_Name: ContentBubbleData1
   m_EditorClassIdentifier: 
-  bubbleText: "\u6C49\u5821"
+  bubbleText: Dream 1
   value1: 5
-  value2: 2
-  value3: 4
+  value2: 5
+  value3: 5
   _revert: 1

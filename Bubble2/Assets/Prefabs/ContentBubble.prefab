@@ -309,10 +309,11 @@ MonoBehaviour:
   selectedIndex: 0
   contentBubbleData: {fileID: 0}
   numericBubbleData: {fileID: 0}
-  tastyValue: 0
-  healthValue: 0
-  satietyValue: 0
+  courageValue: 0
+  curiosityValue: 0
+  whimsyValue: 0
   bubbleTextData: {fileID: 11400000, guid: f7e7dd4e8517e584e82dfba6f43d9b0a, type: 2}
+  textDisplay: {fileID: 0}
 --- !u!1 &8226864325057790274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,7 +2168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sample text
+  m_text: Dream Bubble
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
